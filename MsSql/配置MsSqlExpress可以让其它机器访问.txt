@@ -1,0 +1,10 @@
+如果不想使用管理工具来配置，可以这样做：
+1、通过注册表修改登录模式：
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\MSSQL10.SQLEXPRESS\MSSQLServer]
+"LoginMode"=dword:00000002
+1代表WIN集成认证，2代表混合认证。
+2、修改sa的密码
+可以通VS2010的数据库连接先通过集成认证进入数据库，执行查询：
+sp_password Null,'admin123456','sa'
+3、启用sa帐号。
+alter login sa enable
